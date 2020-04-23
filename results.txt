@@ -1,0 +1,20 @@
+hyperparam tuning results
+training_interval - batch_size - mean score last 100 episodes
+
+8 - 32 - mean score 0.3132999929971993
+10 - 32 - mean score 0.6851999846845865
+12 - 32 - mean score 0.7356999835558236
+14 - 32 - mean score 0.37769999155774714
+12 - 16 - mean score 0.7781999826058745
+1 - 1 - mean score 0.018599999584257603
+20 - 10 - mean score 0.24449999453499913
+1 - 20 - mean score 0.31029999306425454
+12 - 64 -
+12 - 128
+4 - 128
+1 - 128
+high score episode 44 rewards 6.069999864324927 mean score 0.6864444291012155
+
+
+change seed value?
+change network sizes?
