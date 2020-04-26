@@ -28,7 +28,7 @@ class Agent():
         self.target_network_update(self.critic_target, self.critic, 1.0)
 
 
-
+#for agnt in range(20):
     def select_actions(self, state):
         state = torch.from_numpy(state).float()
         self.actor.eval()
@@ -89,7 +89,7 @@ class Agent():
 class OUNoise:
     """Ornstein-Uhlenbeck process."""
 
-    def __init__(self, size, seed, mu=0., theta=0.15, sigma=0.05):
+    def __init__(self, size, seed, mu=0., theta=0.15, sigma=0.1):
         """Initialize parameters and noise process."""
         self.mu = mu * np.ones(size)
         self.theta = theta
