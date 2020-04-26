@@ -56,6 +56,7 @@ class Agent():
             current_q_v = self.critic(states, actions)
             critic_loss = F.mse_loss(current_q_v, q_targets)
             critic_loss.backward()
+            torch.nn.utils.clip_grad_norm(self.critic.parameters(), 1)
             self.critic_optim.step()
 
             actions = self.actor(states)
