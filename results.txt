@@ -20,3 +20,4 @@ remove activation function from last layer of critic
 12 -32 mean score 0.71
 change seed value?
 change network sizes?
+add batch norm

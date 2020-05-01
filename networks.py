@@ -12,9 +12,10 @@ class Actor(nn.Module):
     def __init__(self, state_size, action_size):
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(2)
-        self.fc1 = nn.Linear(state_size, 256)        
-        self.fc2 = nn.Linear(256, 256)
+        self.fc1 = nn.Linear(state_size, 128)        
+        self.fc2 = nn.Linear(128, 256)
         self.fc3 = nn.Linear(256, 4)
+        self.batch_norm = nn.BatchNorm1d(128)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -23,7 +24,7 @@ class Actor(nn.Module):
         self.fc3.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, x):
-        x = F.relu(self.fc1(x))
+        x = F.relu(self.batch_norm(self.fc1(x)))
         x = F.relu(self.fc2(x))
         x = F.tanh(self.fc3(x))
         return x
@@ -32,9 +33,10 @@ class Critic(nn.Module):
     def __init__(self, state_size, action_size):
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(2)
-        self.fc1 = nn.Linear(state_size, 256)
-        self.fc2 = nn.Linear(256+4, 256)
+        self.fc1 = nn.Linear(state_size, 128)
+        self.fc2 = nn.Linear(128+4, 256)
         self.fc3 = nn.Linear(256, 1)
+        self.batch_norm = nn.BatchNorm1d(128)
         self.reset_parameters()
 
     def reset_parameters(self):
@@ -43,7 +45,7 @@ class Critic(nn.Module):
         self.fc3.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, x, actions):
-        x = F.relu(self.fc1(x))
+        x = F.relu(self.batch_norm(self.fc1(x)))
         x = F.relu(self.fc2(torch.cat((x, actions), dim=1)))
         x = self.fc3(x)
         return x
