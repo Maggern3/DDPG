@@ -1,9 +1,9 @@
-### DDPG
-## Project environment
+## DDPG
+#### Project environment
 33 states for each agent, 20 agents in multi agent environment. Each agent has 4 continous actions.
 The environment is considered solved when an average score of 30+ for all agents is maintained for 100 episodes.
 
-## Installation 
+#### Installation 
 First clone the [udacity deep reinforcement learning repo](https://github.com/udacity/deep-reinforcement-learning) 
 and navigate to it's directory then
 ```
@@ -22,7 +22,7 @@ Put it in the root of the cloned project folder and unzip to Reacher_20_agents f
 
 You should now be able to build and run the project.
 
-## How to train the agent
+#### How to train the agent
 Run the following command to train the agent
 ```
 python runner.py
